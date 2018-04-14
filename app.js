@@ -233,6 +233,10 @@ $(document).ready(function() {
     next(category);
   });
 
+  $('.generate').click(function() {
+    next(category);
+  });
+
   $(document).keypress(function(e) {
     if (e.key == ' ') {
       next(category);
