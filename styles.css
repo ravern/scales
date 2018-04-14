@@ -1,0 +1,40 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 100vh;
+}
+
+.header {
+  padding: 1rem;
+}
+
+.main {
+  max-width: 800px;
+  text-align: center;
+}
+
+.footer {
+  padding: 1rem;
+  font-style: italic;
+  font-size: 1rem;
+}
+
+.category {
+  font-size: 1rem;
+}
+
+.name {
+  display: block;
+  font-weight: bold;
+  font-size: 5rem;
+}
+
+.attribute {
+  display: block;
+  font-size: 3rem;
+}
