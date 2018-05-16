@@ -32,9 +32,9 @@ const INVERSION_SECOND = 'Second Inversion';
 const ATTRIBUTES = {};
 ATTRIBUTES[CONTROL_STACATTO] = 50;
 ATTRIBUTES[CONTROL_LEGATO] = 50;
-ATTRIBUTES[HANDS_TOGETHER] = 90;
-ATTRIBUTES[HANDS_RIGHT] = 5;
-ATTRIBUTES[HANDS_LEFT] = 5;
+ATTRIBUTES[HANDS_TOGETHER] = 95;
+ATTRIBUTES[HANDS_RIGHT] = 2.5;
+ATTRIBUTES[HANDS_LEFT] = 2.5;
 ATTRIBUTES[INVERSION_ROOT] = 33;
 ATTRIBUTES[INVERSION_FIRST] = 33;
 ATTRIBUTES[INVERSION_SECOND] = 34;
@@ -225,8 +225,9 @@ SCALES[CATEGORY_DIMINISHED] = {
 
 $(document).ready(function() {
   let category = CATEGORY_NORMAL;
+  let previous;
 
-  next(category);
+  previous = next(category, previous);
 
   $('.category').change(function() {
     category = $('.category').val();
@@ -234,7 +235,7 @@ $(document).ready(function() {
   });
 
   $('.generate').click(function() {
-    next(category);
+    previous = next(category);
   });
 
   $(document).keypress(function(e) {
@@ -244,9 +245,17 @@ $(document).ready(function() {
   });
 });
 
-function next(category) {
+function next(category, previous) {
   const scales = SCALES[category];
-  const name = scales.names[Math.floor((Math.random() * scales.names.length))];
+
+  let name;
+  while (true) {
+    name = scales.names[Math.floor((Math.random() * scales.names.length))];
+    if (name != previous) {
+      break
+    }
+  }
+
   let attributes = [];
   for (const attrs of scales.attributes) {
     attributes.push(randomAttribute(attrs));
