@@ -267,6 +267,8 @@ function next(category, previous) {
   for (const attribute of attributes) {
     main.append($('<span></span>').addClass('attribute').text(attribute));
   }
+
+  return name;
 }
 
 function randomAttribute(attributes) {
